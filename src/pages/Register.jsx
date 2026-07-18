@@ -1,7 +1,16 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 
 function Register() {
   const [role, setRole] = useState("jobseeker");
+  const navigate = useNavigate();
+
+  const handleSubmit=(e)=>{
+    e.preventDefault();
+    console.log("lefegf");
+    navigate("/login");
+  };
 
   return (
     <div className="bg-[#1c1c24] h-screen flex items-center justify-center p-6">
@@ -73,7 +82,9 @@ function Register() {
               </button>
             </div>
 
-            <form key={role} className="space-y-4">
+            <form key={role} className="space-y-4"
+              onSubmit={handleSubmit}
+            >
 
               <input
                 type="text"
@@ -123,6 +134,7 @@ function Register() {
 
               <button
                 type="submit"
+                
                 className="w-full bg-purple-600 rounded-lg p-3 text-white hover:bg-purple-700"
               >
                 Create Account
