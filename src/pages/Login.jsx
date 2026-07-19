@@ -5,7 +5,6 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 function Login() {
   const [showPassword, setShowPassword] = useState(false);
-
   return (
     <div className="min-h-screen bg-[#1c1c24] flex items-center justify-center p-6">
       <div className="w-full h-full bg-[#13131a] rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row">
@@ -29,7 +28,7 @@ function Login() {
             </h2>
           </div>
         </div>
-
+          
         {/* Right Section */}
         <div className="w-full md:w-1/2 flex items-center justify-center p-8 md:p-12">
           <div className="w-full max-w-md">
