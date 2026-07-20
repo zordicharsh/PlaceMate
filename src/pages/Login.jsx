@@ -3,14 +3,52 @@ import { Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FiMail, FiLock } from "react-icons/fi";
+import axios from "axios";
 
 function Login() {
   const [showPassword, setShowPassword] = useState(false);
 
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+
+  const handleChange = (e) => {
+  
+
+  setFormData({
+    ...formData,
+    [e.target.name]: e.target.value,
+  });
+};
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    // Handle login logic here
+
+    try{
+        const response = await axios.post(
+          "http://localhost:5000/api/users/login",
+          formData
+        )
+         console.log(response.data);
+    } catch(error){
+         console.log(error);
+    }   
+
+
+
+
+  }
+
+
+
+
   return (
     <div className="min-h-screen bg-[#1c1c24] flex items-center justify-center p-4 sm:p-6">
       <div className="w-full max-w-5xl bg-[#13131a] rounded-3xl overflow-hidden shadow-2xl border border-white/5 flex flex-col md:flex-row">
-        
+
         {/* Left Section */}
         <div className="hidden md:block md:w-1/2 relative min-h-125">
           <img
@@ -67,7 +105,7 @@ function Login() {
             </div>
 
             {/* Login Form */}
-            <form className="space-y-5" onSubmit={(e) => e.preventDefault()}>
+            <form className="space-y-5" onSubmit={handleSubmit}>
 
               {/* Email / Mobile */}
               <div className="relative">
@@ -76,6 +114,9 @@ function Login() {
                 </span>
                 <input
                   type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
                   placeholder="Enter your email"
                   className="w-full bg-[#1c1c24] text-white rounded-xl py-3.5 pl-12 pr-4 outline-none border border-transparent focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-200 placeholder:text-gray-500"
                 />
@@ -88,7 +129,10 @@ function Login() {
                 </span>
                 <input
                   type={showPassword ? "text" : "password"}
+                  name="password"
                   placeholder="Password"
+                  value={formData.password}
+                  onChange={handleChange}
                   className="w-full bg-[#1c1c24] text-white rounded-xl py-3.5 pl-12 pr-12 outline-none border border-transparent focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-200 placeholder:text-gray-500"
                 />
 
