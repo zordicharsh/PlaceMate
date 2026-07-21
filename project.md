@@ -1,25 +1,52 @@
 # PlaceMate Workspace Summary
 
 ## Stack
-React 19, Vite, Tailwind CSS v4, React Router Dom v7, React Icons.
+
+### Frontend
+- **Framework & Tooling:** React 19, Vite, React Router DOM v7
+- **Styling & Assets:** Tailwind CSS v4, React Icons
+- **HTTP Client:** Axios
+
+### Backend
+- **Runtime & Framework:** Node.js, Express (v5.x)
+- **Database Driver:** MySQL2
+- **Authentication & Security:** JSON Web Token (JWT), Bcrypt
+- **Development Tooling:** Nodemon
+
+---
 
 ## File Tree
+
+```
 .
-├── public/
-│   ├── favicon.svg
-│   └── icons.svg
-└── src/
-    ├── components/
-    │   └── Navbar.jsx           # Main navigation bar (Login, Register buttons)
-    ├── pages/
-    │   ├── dashborad/           # Note: Folder is misspelled as "dashborad" in codebase
-    │   │   ├── Jobgiver.jsx     # Job Giver dashboard page
-    │   │   ├── Jobseeker.jsx    # Job Seeker dashboard page
-    │   │   └── Navdashboard.jsx # Dashboard navigation menu (recruiter profile, links, logout)
-    │   ├── Home.jsx             # Public home landing page
-    │   ├── Login.jsx            # Sign-in page (Google & email forms)
-    │   └── Register.jsx         # Sign-up page (toggles between Seeker and Giver details)
-    ├── App.css                  # Empty stylesheet
-    ├── App.jsx                  # Main routing config (Routes setup)
-    ├── index.css                # Global CSS (Imports Tailwind CSS v4)
-    └── main.jsx                 # React DOM entry point
+├── backend/                  # Backend Node/Express server code
+│   ├── controllers/          # Request handlers and business logic
+│   │   └── userController.js # Handles registration and login operations
+│   ├── middleware/           # Custom middleware functions (currently empty)
+│   ├── models/               # Database schemas and models (currently empty)
+│   ├── routes/               # API route definitions
+│   │   └── userRoutes.js     # User registration and login routing
+│   ├── package.json          # Backend dependencies and script configurations
+│   └── server.js             # Entry point for the Express server (runs on port 5000)
+├── public/                   # Static public assets for the frontend
+│   ├── favicon.svg           # Website icon
+│   └── icons.svg             # SVG icon spritesheet
+├── src/                      # Frontend React source code
+│   ├── components/           # Reusable UI components
+│   │   └── Navbar.jsx        # Main navigation bar (with Login and Register controls)
+│   ├── pages/                # Page views
+│   │   ├── dashborad/        # Dashboards (Note: Folder is misspelled as "dashborad" in codebase)
+│   │   │   ├── Jobgiver.jsx  # Recruiter dashboard page
+│   │   │   ├── Jobseeker.jsx # Job seeker dashboard page
+│   │   │   └── Navdashboard.jsx # Dashboard specific navigation/sidebar controls
+│   │   ├── Home.jsx          # Public home landing page
+│   │   ├── Login.jsx         # Sign-in page supporting email and Google login
+│   │   └── Register.jsx      # Sign-up page (toggleable between Seeker/Giver views)
+│   ├── App.css               # Currently empty stylesheet
+│   ├── App.jsx               # App component setting up routing and paths
+│   ├── index.css             # Main stylesheet importing Tailwind CSS v4
+│   └── main.jsx              # React application entry point
+├── package.json              # Frontend package.json with dependencies
+├── vite.config.js            # Vite configuration including Tailwind CSS v4 plugin
+└── eslint.config.js          # ESLint configuration
+```
