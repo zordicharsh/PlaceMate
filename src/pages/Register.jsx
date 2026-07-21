@@ -3,17 +3,46 @@ import { useNavigate, Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FiMail, FiLock, FiUser, FiPhone, FiBriefcase, FiAward } from "react-icons/fi";
+import axios from "axios";
 
 function Register() {
   const [role, setRole] = useState("jobseeker");
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+  name: "",
+  email: "",
+  password: "",
+  phone: "",
+  organization: "",
+  position: "",
+});
+const handleChange = (e) => {
+  setFormData({
+    ...formData,
+    [e.target.name]: e.target.value,
+  });
+};
 
-  const handleSubmit=(e)=>{
-    e.preventDefault();
-    console.log("Registering form submitted");
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  try {
+    const res = await axios.post(
+      "http://localhost:5000/api/users/register",
+      {
+        role,
+        ...formData,
+      }
+    );
+
+    alert(res.data.message);
+
     navigate("/login");
-  };
+  } catch (err) {
+    console.log(err);
+    alert("Registration Failed");
+  }
+};
 
   return (
     <div className="bg-[#1c1c24] min-h-screen flex items-center justify-center p-4 sm:p-6">
@@ -108,6 +137,9 @@ function Register() {
                 </span>
                 <input
                   type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
                   placeholder="Enter your name"
                   required
                   className="w-full bg-[#1c1c24] text-white rounded-xl py-3.5 pl-12 pr-4 outline-none border border-transparent focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-200 placeholder:text-gray-500"
@@ -120,6 +152,9 @@ function Register() {
                 </span>
                 <input
                   type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
                   placeholder="Email"
                   required
                   className="w-full bg-[#1c1c24] text-white rounded-xl py-3.5 pl-12 pr-4 outline-none border border-transparent focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-200 placeholder:text-gray-500"
@@ -133,6 +168,9 @@ function Register() {
                 <input
                   type={showPassword ? "text" : "password"}
                   placeholder="Password"
+                  name="password"
+                  value={formData.password}
+                  onChange={handleChange}
                   required
                   className="w-full bg-[#1c1c24] text-white rounded-xl py-3.5 pl-12 pr-12 outline-none border border-transparent focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-200 placeholder:text-gray-500"
                 />
@@ -158,6 +196,10 @@ function Register() {
                     </span>
                     <input
                       type="tel"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      name="phone"
                       placeholder="Enter your phone number"
                       required
                       className="w-full bg-[#1c1c24] text-white rounded-xl py-3.5 pl-12 pr-4 outline-none border border-transparent focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-200 placeholder:text-gray-500"
@@ -170,6 +212,10 @@ function Register() {
                     </span>
                     <input
                       type="text"
+                      name="organisation"
+                      value={formData.organisation}
+                      onChange={handleChange}
+                      name="organisation"
                       placeholder="Enter your organisation name"
                       required
                       className="w-full bg-[#1c1c24] text-white rounded-xl py-3.5 pl-12 pr-4 outline-none border border-transparent focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-200 placeholder:text-gray-500"
@@ -182,6 +228,9 @@ function Register() {
                     </span>
                     <input
                       type="text"
+                      name="role"
+                      value={formData.role}
+                      onChange={handleChange}                     
                       placeholder="Enter your role"
                       required
                       className="w-full bg-[#1c1c24] text-white rounded-xl py-3.5 pl-12 pr-4 outline-none border border-transparent focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-200 placeholder:text-gray-500"

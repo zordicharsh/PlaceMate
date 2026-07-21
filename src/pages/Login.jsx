@@ -7,18 +7,11 @@ import axios from "axios";
 
 function Login() {
   const [showPassword, setShowPassword] = useState(false);
-<<<<<<< HEAD
-=======
-
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
-
-
   const handleChange = (e) => {
-  
-
   setFormData({
     ...formData,
     [e.target.name]: e.target.value,
@@ -38,16 +31,7 @@ function Login() {
     } catch(error){
          console.log(error);
     }   
-
-
-
-
   }
-
-
-
-
->>>>>>> origin/harsh
   return (
     <div className="min-h-screen bg-[#1c1c24] flex items-center justify-center p-4 sm:p-6">
       <div className="w-full max-w-5xl bg-[#13131a] rounded-3xl overflow-hidden shadow-2xl border border-white/5 flex flex-col md:flex-row">
