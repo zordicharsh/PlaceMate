@@ -6,7 +6,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Jobseeker from "./pages/dashborad/Jobseeker";
-import Jobgiver from "./pages/dashborad/jobgiver";
+import Jobgiver from "./pages/dashborad/Jobgiver";
 
 
 function App() {
