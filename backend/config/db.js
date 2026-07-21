@@ -1,9 +1,9 @@
-import mysql from "mysql2";
+import mysql from "mysql2/promise";
 import dotenv from "dotenv";
 
 dotenv.config();
 
-const db = mysql.createConnection({
+const db = await mysql.createConnection({
   host: process.env.DB_HOST,
   port: process.env.DB_PORT,
   user: process.env.DB_USER,
@@ -11,13 +11,6 @@ const db = mysql.createConnection({
   database: process.env.DB_NAME,
 });
 
-db.connect((err) => {
-  if (err) {
-    console.log("❌ Database Connection Failed");
-    console.log(err.message);
-  } else {
-    console.log("✅ Database Connected Successfully");
-  }
-});
+console.log("✅ Database Connected Successfully");
 
 export default db;

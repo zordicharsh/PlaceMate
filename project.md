@@ -36,8 +36,8 @@
 │   │   └── Navbar.jsx        # Main navigation bar (with Login and Register controls)
 │   ├── pages/                # Page views
 │   │   ├── dashborad/        # Dashboards (Note: Folder is misspelled as "dashborad" in codebase)
-│   │   │   ├── Jobgiver.jsx  # Recruiter dashboard page
-│   │   │   ├── Jobseeker.jsx # Job seeker dashboard page
+│   │   │   ├── Recruiter.jsx  # Recruiter dashboard page
+│   │   │   ├── Candidate.jsx  # Candidate dashboard page
 │   │   │   └── Navdashboard.jsx # Dashboard specific navigation/sidebar controls
 │   │   ├── Home.jsx          # Public home landing page
 │   │   ├── Login.jsx         # Sign-in page supporting email and Google login
