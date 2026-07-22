@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FiMail, FiLock } from "react-icons/fi";
 import axios from "axios";
 
 function Login() {
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
 
   const [formData, setFormData] = useState({
@@ -23,26 +24,33 @@ function Login() {
   });
 };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    // Handle login logic here
+ const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    try{
-        const response = await axios.post(
-          "http://localhost:5000/api/users/login",
-          formData
-        )
-         console.log(response.data);
-    } catch(error){
-         console.log(error);
-    }   
+  try {
+    const response = await axios.post(
+      "http://localhost:5000/api/users/login",
+      formData
+    );
 
+    console.log(response.data);
 
+  if (response.data.success) {
 
+  localStorage.setItem("token", response.data.token);
 
+  localStorage.setItem("user", JSON.stringify(response.data.user));
+
+  if (response.data.userType === 2) {
+    navigate("/dashboard/candidate");
+  } else if (response.data.userType === 1) {
+    navigate("/dashboard/recruiter");
   }
-
-
+    }
+  } catch (error) {
+    console.log(error.response?.data || error);
+  }
+};
 
 
   return (

@@ -14,7 +14,8 @@ export const registerCandidate = async (req, res) => {
     success: false,
     message: "Email already registered",
   });
-    }else{
+    }
+    else{
         const sql = `
       INSERT INTO candidates (name, email, password)
       VALUES (?, ?, ?)
@@ -38,14 +39,6 @@ export const registerCandidate = async (req, res) => {
   }
 };
 
-
-
-
-
-
-
-
-
 export const registerRecruiter = async (req,res)=>{
 
     try{
@@ -59,7 +52,9 @@ export const registerRecruiter = async (req,res)=>{
         success: false,
         message: "Email already registered",
   });
-    }else{
+
+    }
+    else{
 
     const sql = `INSERT INTO recruiters (name,email,password,orgname,designation,tel) VALUES (?,?,?,?,?,?)`;
 
@@ -68,15 +63,7 @@ export const registerRecruiter = async (req,res)=>{
          success: false,
       message: "User Register Suceess",
     });
-    }
-
-
-    
-
-    
-
-
-
+    } 
 
     }catch(error){
         console.log(error);
@@ -86,13 +73,4 @@ export const registerRecruiter = async (req,res)=>{
     });
     }
 
-
-
-
-   
-
-
-
-
-    
 }
