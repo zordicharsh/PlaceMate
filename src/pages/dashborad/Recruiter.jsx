@@ -1,9 +1,9 @@
 import Navdashboard from "./Navdashboard";
 
-function jobgiver() {
+function Recruiter() {
   return (
     <Navdashboard/>
   )
 }
 
-export default jobgiver
+export default Recruiter

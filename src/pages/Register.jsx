@@ -1,150 +1,91 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-
+import { Link } from "react-router-dom";
+import { FiUser, FiBriefcase } from "react-icons/fi";
 
 function Register() {
-  const [role, setRole] = useState("jobseeker");
-  const navigate = useNavigate();
-
-  const handleSubmit=(e)=>{
-    e.preventDefault();
-    console.log("lefegf");
-    navigate("/login");
-  };
-
   return (
-    <div className="bg-[#1c1c24] h-screen flex items-center justify-center p-6">
-      <div className="w-full h-full bg-[#13131a] rounded-3xl overflow-hidden shadow-2xl flex">
-
+    <div className="bg-[#1c1c24] min-h-screen flex items-center justify-center p-4 sm:p-6">
+      <div className="w-full max-w-5xl bg-[#13131a] rounded-3xl overflow-hidden shadow-2xl border border-white/5 flex flex-col md:flex-row">
         {/* Left Section */}
-        <div className="w-full md:w-1/2 relative">
+        <div className="hidden md:block md:w-1/2 relative min-h-125">
           <img
             src="https://blog.ipleaders.in/wp-content/uploads/2017/05/iPleaders-12.jpg"
             alt="Background"
-            className="w-full h-full object-cover"
+            className="absolute inset-0 w-full h-full object-cover"
           />
-
-          <div className="absolute inset-0 bg-purple-900/30"></div>
-
-          <div className="absolute bottom-12 left-12 text-white">
-            <h2 className="text-4xl font-semibold">
-              Capturing Moments,
+          <div className="absolute inset-0 bg-linear-to-t from-[#13131a] via-purple-950/40 to-transparent"></div>
+          <div className="absolute bottom-12 left-12 right-12 text-white">
+            <h2 className="text-4xl font-bold tracking-tight mb-2">
+              Capturing Jobs,
             </h2>
-
-            <h2 className="text-4xl font-semibold">
-              Creating Memories
-            </h2>
+            <p className="text-xl text-purple-200 font-medium">
+              Creating Jobs
+            </p>
           </div>
         </div>
 
         {/* Right Section */}
-        <div className="w-full md:w-1/2 flex items-center justify-center p-12">
-          <div className="w-full max-w-md">
-
-            <h1 className="text-white text-4xl font-semibold mb-2">
+        <div className="w-full md:w-1/2 flex flex-col justify-center p-8 sm:p-12 lg:p-16">
+          <div className="w-full">
+            <h1 className="text-white text-4xl font-bold mb-2 tracking-tight">
               Create an account
             </h1>
-
-            <p className="text-gray-400 mb-8">
+            <p className="text-gray-400 mb-8 text-sm">
               Already have an account?{" "}
-              <a
-                href="/login"
-                className="text-white hover:underline"
+              <Link
+                to="/login"
+                className="text-purple-400 hover:text-purple-300 font-semibold transition-colors duration-200"
               >
                 Login
-              </a>
+              </Link>
             </p>
 
-            {/* Role Toggle */}
-            <div className="flex w-full bg-[#1c1c24] rounded-lg p-1 mb-6">
-              <button
-                type="button"
-                onClick={() => setRole("jobseeker")}
-                className={`w-1/2 py-2 rounded-lg transition-all duration-300 ${
-                  role === "jobseeker"
-                    ? "bg-purple-600 text-white"
-                    : "text-gray-400"
-                }`}
-              >
-                I am Job Seeker
-              </button>
+            <h2 className="text-gray-400 text-lg font-medium mb-6">
+              Choose your account type
+            </h2>
 
-              <button
-                type="button"
-                onClick={() => setRole("jobgiver")}
-                className={`w-1/2 py-2 rounded-lg transition-all duration-300 ${
-                  role === "jobgiver"
-                    ? "bg-purple-600 text-white"
-                    : "text-gray-400"
-                }`}
+            <div className="space-y-4">
+              {/* Candidate Option Card */}
+              <Link
+                to="/register/candidate"
+                className="block group bg-[#1c1c24] hover:bg-[#22222d] border border-white/5 hover:border-purple-500/40 rounded-2xl p-6 transition-all duration-300 shadow-md hover:shadow-lg hover:shadow-purple-500/5"
               >
-                I am Job Giver
-              </button>
+                <div className="flex items-start gap-4">
+                  <div className="bg-purple-600/10 text-purple-400 p-3.5 rounded-xl group-hover:bg-purple-600 group-hover:text-white transition-all duration-300">
+                    <FiUser size={26} />
+                  </div>
+                  <div>
+                    <h3 className="text-white text-lg font-bold group-hover:text-purple-400 transition-colors duration-200">
+                      Join as a Candidate
+                    </h3>
+                    <p className="text-gray-400 text-sm mt-1 leading-relaxed">
+                      Find jobs, showcase your skills, and apply to top companies worldwide.
+                    </p>
+                  </div>
+                </div>
+              </Link>
+
+              {/* Recruiter Option Card */}
+              <Link
+                to="/register/recruiter"
+                className="block group bg-[#1c1c24] hover:bg-[#22222d] border border-white/5 hover:border-purple-500/40 rounded-2xl p-6 transition-all duration-300 shadow-md hover:shadow-lg hover:shadow-purple-500/5"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="bg-purple-600/10 text-purple-400 p-3.5 rounded-xl group-hover:bg-purple-600 group-hover:text-white transition-all duration-300">
+                    <FiBriefcase size={26} />
+                  </div>
+                  <div>
+                    <h3 className="text-white text-lg font-bold group-hover:text-purple-400 transition-colors duration-200">
+                      Join as a Recruiter
+                    </h3>
+                    <p className="text-gray-400 text-sm mt-1 leading-relaxed">
+                      Post job listings, manage hiring pipelines, and find top talent.
+                    </p>
+                  </div>
+                </div>
+              </Link>
             </div>
-
-            <form key={role} className="space-y-4"
-              onSubmit={handleSubmit}
-            >
-
-              <input
-                type="text"
-                placeholder="Enter your name"
-                className="w-full bg-[#1c1c24] text-white rounded-lg p-3 outline-none"
-              />
-
-              <input
-                type="email"
-                placeholder="Email"
-                className="w-full bg-[#1c1c24] text-white rounded-lg p-3 outline-none"
-              />
-
-              <input
-                type="password"
-                placeholder="Password"
-                className="w-full bg-[#1c1c24] text-white rounded-lg p-3 outline-none"
-              />
-
-              {/* Show only for Job Giver */}
-              {role === "jobgiver" && (
-                <>
-                  <input
-                    type="tel"
-                    placeholder="Enter your phone number"
-                    className="w-full bg-[#1c1c24] text-white rounded-lg p-3 outline-none"
-                  />
-
-                  <input
-                    type="text"
-                    placeholder="Enter your organisation name"
-                    className="w-full bg-[#1c1c24] text-white rounded-lg p-3 outline-none"
-                  />
-
-                  <input
-                    type="text"
-                    placeholder="Enter your role"
-                    className="w-full bg-[#1c1c24] text-white rounded-lg p-3 outline-none"
-                  />
-                </>
-              )}
-
-              <label className="flex items-center gap-2 text-gray-400">
-                <input type="checkbox" />
-                I agree to the Terms & Conditions
-              </label>
-
-              <button
-                type="submit"
-                
-                className="w-full bg-purple-600 rounded-lg p-3 text-white hover:bg-purple-700"
-              >
-                Create Account
-              </button>
-
-            </form>
-
           </div>
         </div>
-
       </div>
     </div>
   );
