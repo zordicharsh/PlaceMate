@@ -5,8 +5,10 @@ import {BrowserRouter,Route,Routes} from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import Jobseeker from "./pages/dashborad/Jobseeker";
-import Jobgiver from "./pages/dashborad/Jobgiver";
+import CandidateRegister from "./pages/CandidateRegister";
+import RecruiterRegister from "./pages/RecruiterRegister";
+import Candidate from "./pages/dashborad/Candidate";
+import Recruiter from "./pages/dashborad/Recruiter";
 
 
 function App() {
@@ -16,8 +18,10 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/dashboard/jobseeker" element={<Jobseeker/>}/>
-        <Route path="/dashboard/jobgiver" element={<Jobgiver/>}/>
+        <Route path="/register/candidate" element={<CandidateRegister />} />
+        <Route path="/register/recruiter" element={<RecruiterRegister />} />
+        <Route path="/dashboard/candidate" element={<Candidate/>}/>
+        <Route path="/dashboard/recruiter" element={<Recruiter/>}/>
       </Routes>
     </BrowserRouter>
   );
