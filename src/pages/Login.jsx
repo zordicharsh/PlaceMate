@@ -4,7 +4,6 @@ import { FcGoogle } from "react-icons/fc";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FiMail, FiLock } from "react-icons/fi";
 import axios from "axios";
-
 function Login() {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
@@ -27,20 +26,33 @@ function Login() {
       "http://localhost:5000/api/users/login",
       formData
     );
-
-    console.log(response.data);
+    console.log("Login Response:", response.data);
+    
 
   if (response.data.success) {
 
   localStorage.setItem("token", response.data.token);
 
   localStorage.setItem("user", JSON.stringify(response.data.user));
+  
+  const user = response.data.user;
+  console.log("User:", user);
+  console.log("onboardingCompleted:", user.onboardingCompleted);
 
-  if (response.data.userType === 2) {
+ if (response.data.userType === 2) {
+
+  if (user.onboardingCompleted) {
+    console.log("Going to Dashboard");
     navigate("/dashboard/candidate");
-  } else if (response.data.userType === 1) {
-    navigate("/dashboard/recruiter");
+  } else {
+    console.log("Going to Onboarding");
+    navigate("/dashboard/candidateComponent/CandidateOnboarding");
   }
+
+}
+ else {
+  navigate("/dashboard/recruiter");
+}
     }
   } catch (error) {
     console.log(error.response?.data || error);

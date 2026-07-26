@@ -7,8 +7,9 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import CandidateRegister from "./pages/CandidateRegister";
 import RecruiterRegister from "./pages/RecruiterRegister";
-import Candidate from "./pages/dashborad/Candidate";
 import Recruiter from "./pages/dashborad/Recruiter";
+import CandidateOnboarding from "./pages/dashborad/CandidateComponent/CandidateOnboarding";
+import Candidate from "./pages/dashborad/CandidateComponent/Candidate";
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
         <Route path="/register/recruiter" element={<RecruiterRegister />} />
         <Route path="/dashboard/candidate" element={<Candidate/>}/>
         <Route path="/dashboard/recruiter" element={<Recruiter/>}/>
+        <Route path="/dashboard/CandidateComponent/CandidateOnboarding" element={<CandidateOnboarding />}/>
       </Routes>
     </BrowserRouter>
   );

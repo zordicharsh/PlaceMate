@@ -23,19 +23,23 @@ function CandidateRegister() {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
+  e.preventDefault();
 
-      const response = axios.post(
-        "http://localhost:5000/api/users/register/candidate",
-        formData
-      );
-      console.log(response);
-      console.log("Candidate Registration Submitted:");
-    } catch (error) {
+  try {
+    const response = await axios.post(
+      "http://localhost:5000/api/users/register/candidate",
+      formData
+    );
+
+    if (response.data.success) {
+      alert("Registration Successful! Please login.");
+      navigate("/login");
+    }
+  } catch (error) {
     console.log(error.response?.data || error.message);
+    alert(error.response?.data?.message || "Registration Failed");
   }
-  };
+};
 
   return (
     <div className="bg-[#1c1c24] min-h-screen flex items-center justify-center p-4 sm:p-6">

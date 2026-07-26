@@ -14,6 +14,7 @@ export const login = async (req, res) => {
       "SELECT * FROM candidates WHERE email = ?",
       [email]
     );
+    console.log(candidate[0]);
 
     if (candidate.length > 0) {
       rows = candidate;
@@ -63,17 +64,20 @@ export const login = async (req, res) => {
     );
 
     // Login Success
-    return res.status(200).json({
-      success: true,
-      message: "Login Successful",
-      token,
-      userType,
-      user: {
-        id: rows[0].id,
-        name: rows[0].name,
-        email: rows[0].email,
-      },
-    });
+  // Login Success
+return res.status(200).json({
+  success: true,
+  message: "Login Successful",
+  token,
+  userType,
+  
+  user: {
+    id: rows[0].id,
+    name: rows[0].name,
+    email: rows[0].email,
+    onboardingCompleted: rows[0].onboardingCompleted,
+  },
+ });
 
   } catch (error) {
     console.error(error);
