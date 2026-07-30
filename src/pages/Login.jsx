@@ -31,9 +31,9 @@ function Login() {
 
   if (response.data.success) {
 
-  localStorage.setItem("token", response.data.token);
-
-  localStorage.setItem("user", JSON.stringify(response.data.user));
+    localStorage.setItem("token", response.data.token);
+    localStorage.setItem("user", JSON.stringify(response.data.user));
+    localStorage.setItem("userType", response.data.userType);
   
   const user = response.data.user;
   console.log("User:", user);

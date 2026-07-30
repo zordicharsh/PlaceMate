@@ -2,6 +2,7 @@ import express from "express";
 import { registerCandidate, registerRecruiter } from "../controllers/registrationController.js";
 import { login } from "../controllers/loginController.js";
 import { completeOnboarding } from "../controllers/onboardingController.js";
+import authMiddleware from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
@@ -22,6 +23,10 @@ router.get("/test", (req, res) => {
     success: true,
     message: "Test route is working",
   });
+});
+
+router.get("/test", authMiddleware, (req, res) => {
+    res.json(req.user);
 });
 
 // Complete Onboarding Route

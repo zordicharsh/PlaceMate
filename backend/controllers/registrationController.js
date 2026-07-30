@@ -60,8 +60,8 @@ export const registerRecruiter = async (req,res)=>{
 
     await db.query(sql,[name,email,hashedPassword,orgname,designation,tel]);
     return res.status(201).json({
-         success: false,
-      message: "User Register Suceess",
+      success: true,
+      message: "User Register Success",
     });
     } 
 

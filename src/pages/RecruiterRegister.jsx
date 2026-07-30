@@ -26,25 +26,23 @@ function RecruiterRegister() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      console.log("Recruiter Registration Submitted:");
-      console.log(formData);
-      try {
-
-      const response = axios.post(
+      console.log("Recruiter Registration Submitted:", formData);
+      const response = await axios.post(
         "http://localhost:5000/api/users/register/recruiter",
         formData
       );
-      console.log(response);
-      console.log("recruiter Registration Submitted:");
+      if (response.data.success) {
+        alert("Registration Successful! Please login.");
+        navigate("/login");
+      } else {
+        alert(response.data.message || "Registration Failed");
+      }
     } catch (error) {
-    console.log(error.response?.data || error.message);
-  }
-      
-    } catch (error) {
-      console.log(error);
+      console.error(error.response?.data || error.message);
+      alert(error.response?.data?.message || "Registration Failed");
     }
   };
 
