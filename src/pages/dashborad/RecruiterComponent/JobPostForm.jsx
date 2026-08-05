@@ -43,7 +43,7 @@ export default function JobPostForm() {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.post(
-        "http://localhost:5000/api/jobs/create",
+        "http://localhost:5000/api/recruiter/createjob",
         formData,
         {
           headers: {

@@ -56,7 +56,7 @@ const handleSave = async () => {
     const user = JSON.parse(localStorage.getItem("user"));
 
     await axios.put(
-      "http://localhost:5000/api/users/complete-onboarding",
+      "http://localhost:5000/api/user/complete-onboarding",
       {
         id: user.id,
       }

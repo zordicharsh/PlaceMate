@@ -31,7 +31,7 @@ function RecruiterRegister() {
     try {
       console.log("Recruiter Registration Submitted:", formData);
       const response = await axios.post(
-        "http://localhost:5000/api/users/register/recruiter",
+        "http://localhost:5000/api/recruiter/register",
         formData
       );
       if (response.data.success) {

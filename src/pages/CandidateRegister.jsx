@@ -27,7 +27,7 @@ function CandidateRegister() {
 
   try {
     const response = await axios.post(
-      "http://localhost:5000/api/users/register/candidate",
+      "http://localhost:5000/api/user/register",
       formData
     );
 
