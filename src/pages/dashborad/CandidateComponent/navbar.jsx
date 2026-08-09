@@ -2,10 +2,8 @@ import { FaBell, FaSearch } from "react-icons/fa";
 
 export default function Navbar() {
   return (
-    <div className="bg-white shadow-sm rounded-xl p-5 flex justify-between items-center">
-
+    <div className="bg-white shadow-sm rounded-xl  flex justify-between items-center">
       <div>
-
         <h1 className="text-2xl font-bold text-slate-800">
           Welcome Back 👋
         </h1>
